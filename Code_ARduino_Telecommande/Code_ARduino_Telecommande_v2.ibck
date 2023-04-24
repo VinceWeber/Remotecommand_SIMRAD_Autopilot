@@ -1,0 +1,110 @@
+/*
+  Simple example for receiving
+  
+  https://github.com/sui77/rc-switch/
+*/
+
+/* 
+ *  Bouton 1 = Received 11377576 / 24bit Protocol: 1
+ *  Bouton 2 = Received 11377572 / 24bit Protocol: 1
+ *  Bouton 3 = Received 11377580 / 24bit Protocol: 1
+ *  Bouton 4 = Received 11377570 / 24bit Protocol: 1
+ *  Bouton 5 = Received 11377578 / 24bit Protocol: 1
+ *  Bouton 6 = Received 11377574 / 24bit Protocol: 1
+*/
+
+
+#include <RCSwitch.h>
+
+
+RCSwitch mySwitch = RCSwitch();
+
+// constantes
+const int Pin_Btn_left=3;
+const int Pin_Btn_Mode=4;
+const int Pin_Btn_Right=5;
+
+const int Code_btn_1=11377576;
+const int Code_btn_2=11377572;
+const int Code_btn_3=11377580;
+const int Code_btn_4=11377570;
+const int Code_btn_5=11377578;
+const int Code_btn_6=11377574;
+
+boolean Btn_left_etat=0;
+boolean Btn_Mode_etat=0;
+boolean Btn_Right_etat=0;
+int valeur_recue=0;
+int valeur_btn_recue=0;
+
+void setup() {
+  Serial.begin(9600);
+  mySwitch.enableReceive(0);  // Receiver on interrupt 0 => that is pin #2
+  pinMode(3,OUTPUT);
+  pinMode(4,OUTPUT);
+  pinMode(5,OUTPUT);
+}
+
+void loop() {
+
+/* ECOUTE */
+
+  if (mySwitch.available()) {
+
+int valeur_recue=mySwitch.getReceivedValue();
+    
+    Serial.print("Received ");
+    Serial.print( mySwitch.getReceivedValue() );
+    Serial.print(" / ");
+    Serial.print( mySwitch.getReceivedBitlength() );
+    Serial.print("bit ");
+    Serial.print("Protocol: ");
+    Serial.println( mySwitch.getReceivedProtocol() );
+
+    if (valeur_recue==Code_btn_1) {valeur_btn_recue=1;}
+    else if (valeur_recue==Code_btn_2) {valeur_btn_recue=2;}
+    else if (valeur_recue==Code_btn_3) {valeur_btn_recue=3;}
+    else if (valeur_recue==Code_btn_4) {valeur_btn_recue=4;}
+    else if (valeur_recue==Code_btn_5) {valeur_btn_recue=5;}
+    else if (valeur_recue==Code_btn_6) {valeur_btn_recue=6;}
+
+    mySwitch.resetAvailable();
+/* FIN ECCOUTE */
+
+    
+/* REALISATION DES ACTIONS */
+Serial.print(valeur_btn_recue);
+
+if (valeur_btn_recue==1) {digitalWrite(3,HIGH);Serial.print("J'allume le port 3 /");}
+else if (valeur_btn_recue==3) {digitalWrite(4,HIGH);Serial.print("J'allume le port 4 /");}
+else if (valeur_btn_recue==5) {digitalWrite(5,HIGH);Serial.print("J'allume le port 5 /");}
+else if (valeur_btn_recue==2) {digitalWrite(3,LOW);Serial.print("J'éteins le port 3 /");}
+else if (valeur_btn_recue==4) {digitalWrite(4,LOW);Serial.print("J'éteins le port 4 /");}
+else if (valeur_btn_recue==6) {digitalWrite(5,LOW);Serial.print("J'éteins le port 5 /");}
+
+
+/* FIN DE REALISATION DES ACTIONS */
+  }
+}
+
+/*
+unsigned long currentTime=0;
+unsigned long previousTime=0;
+bool ledState=LOW;
+
+void setup() {
+  Serial.begin(9600);
+  pinMode(13,OUTPUT);
+}
+
+void loop() {
+  currentTime=millis();
+  if((currentTime-previousTime)>200){
+    previousTime=currentTime;
+    ledState=!ledState;
+    digitalWrite(13,!ledState);
+    Serial.print(F("LED State : "));Serial.println(ledState);
+  }
+}
+*/
+
