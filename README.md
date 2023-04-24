@@ -31,7 +31,7 @@
       ![image](https://github.com/VinceWeber/Remotecommand_SIMRAD_Autopilot/blob/main/433Mhz%20emitterreceiver.png)
 
     Universal remote controller with 6 buttons
-      ![image](https://github.com/VinceWeber/Remotecommand_SIMRAD_Autopilot/blob/main/433Mhz%20remote%20command.png)
+      ![image](https://github.com/VinceWeber/Remotecommand_SIMRAD_Autopilot/blob/main/user674_pic26920_1485777873.jpg)
  
 
 # Project status
