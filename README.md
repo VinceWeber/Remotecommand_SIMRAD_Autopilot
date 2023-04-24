@@ -29,7 +29,6 @@
     Arduino UNO board
     433Mhz Emitter and receiver kit for arduino
     ![image](https://github.com/VinceWeber/Remotecommand_SIMRAD_Autopilot/blob/main/433Mhz%20emitterreceiver.png)
-    
     433Mhz remote 6 buttons controller
     ![image](https://github.com/VinceWeber/Remotecommand_SIMRAD_Autopilot/blob/main/433Mhz%20emitterreceiver.png)
       
