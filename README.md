@@ -13,9 +13,10 @@
 
 
 # Usage
-
 [(Back to top)](#table-of-contents)
 
+  This program has to be used with an arduino uno controller and an electronic board emulating an R3000X remote controler, by switching transistor to create contacts as described on picture below.
+  !image(https://github.com/VinceWeber/Remotecommand_SIMRAD_Autopilot/blob/main/user674_pic26920_1485777873.jpg)
 
 # Installation
 
